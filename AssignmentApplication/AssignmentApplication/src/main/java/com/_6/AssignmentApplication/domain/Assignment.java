@@ -1,6 +1,7 @@
 package com._6.AssignmentApplication.domain;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity //will create a table named "assignments" in the database
 
