@@ -1,5 +1,7 @@
 package com._6.AssignmentApplication.service;
 
+import com._6.AssignmentApplication.repository.UserRepository;
+import com._6.AssignmentApplication.util.CustomPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -8,18 +10,21 @@ import com._6.AssignmentApplication.domain.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private UserRepository userRepo;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = new User();
-        user.setUserName(username);
-        user.setPassword(passwordEncoder.encode("asdfasdf"));
-        user.setId(1L);
-        return user;  // return the User object if it exists, otherwise throw UsernameNotFoundException
+
+       Optional<User>userOpt = userRepo.findByUserName(username);
+
+
+       return userOpt.orElseThrow(() -> new UsernameNotFoundException("Invalid Credential"));
 
     }
 }
