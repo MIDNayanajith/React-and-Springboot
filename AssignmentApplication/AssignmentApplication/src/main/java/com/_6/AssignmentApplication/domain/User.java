@@ -47,7 +47,11 @@ public class User implements UserDetails {
     }
 
     public void setUserName(String userName) {
-        userName = userName;
+
+      
+
+        this.userName = userName;
+
     }
 
     @Override

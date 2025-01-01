@@ -25,6 +25,7 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private UserRepository userRepo;
 
+
     @Autowired
     private JwtUtil jwtUtil;
 
@@ -34,7 +35,10 @@ public class JwtFilter extends OncePerRequestFilter {
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         // Check if the header is null or doesn't start with "Bearer "
-        if (!StringUtils.hasText(header) || !header.startsWith("Bearer ")) {
+
+        if (!StringUtils.hasText(header) ||(StringUtils.hasText(header)) && !header.startsWith("Bearer ")) {
+
+
             filterChain.doFilter(request, response);
             return;
         }
@@ -72,6 +76,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
 
 }
 
