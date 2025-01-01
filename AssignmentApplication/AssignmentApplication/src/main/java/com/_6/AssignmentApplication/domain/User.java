@@ -21,7 +21,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private LocalDate cohortStartDate;
-    private String UserName;
+    private String userName;
     private String password;
 
 
@@ -43,21 +43,15 @@ public class User implements UserDetails {
 
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        UserName = userName;
-=======
+
+      
 
         this.userName = userName;
->>>>>>> Stashed changes
-=======
 
-        this.userName = userName;
->>>>>>> Stashed changes
     }
 
     @Override
@@ -74,7 +68,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return UserName;
+        return userName;
     }
 
     @Override
