@@ -48,7 +48,12 @@ public class User implements UserDetails {
 
     public void setUserName(String userName) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         UserName = userName;
+=======
+
+        this.userName = userName;
+>>>>>>> Stashed changes
 =======
 
         this.userName = userName;

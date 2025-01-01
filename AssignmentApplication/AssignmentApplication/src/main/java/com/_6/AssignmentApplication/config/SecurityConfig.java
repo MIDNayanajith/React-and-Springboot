@@ -30,16 +30,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        auth.userDetailsService(userDetailsService).passwordEncoder(customPasswordEncoder.getPasswordEncoder());
    }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
    @Override
    protected void configure(HttpSecurity http) throws Exception {
        super.configure(http);
    }
 =======
+=======
+>>>>>>> Stashed changes
    @Autowired
    private JwtFilter jwtFilter;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http = http.csrf().disable().cors().disable();
+<<<<<<< Updated upstream
 
         http = http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -55,6 +59,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 >>>>>>> Stashed changes
 
+=======
+
+        http = http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and();
+
+        http = http.exceptionHandling()
+                .authenticationEntryPoint((request, response, ex) -> {
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
+                }).and();
+
+        http.authorizeRequests()
+                .antMatchers("/api/auth/**").permitAll() // Ensure this is correct
+                .anyRequest().authenticated();
+
+>>>>>>> Stashed changes
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
