@@ -47,7 +47,12 @@ public class User implements UserDetails {
     }
 
     public void setUserName(String userName) {
+<<<<<<< Updated upstream
         UserName = userName;
+=======
+
+        this.userName = userName;
+>>>>>>> Stashed changes
     }
 
     @Override
