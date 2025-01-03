@@ -47,11 +47,7 @@ public class User implements UserDetails {
     }
 
     public void setUserName(String userName) {
-<<<<<<< Updated upstream
 
-      
-=======
->>>>>>> Stashed changes
 
         this.userName = userName;
 
