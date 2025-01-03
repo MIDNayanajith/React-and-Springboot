@@ -13,7 +13,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+<<<<<<< Updated upstream
 import org.springframework.security.web.AuthenticationEntryPoint;
+=======
+>>>>>>> Stashed changes
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        auth.userDetailsService(userDetailsService).passwordEncoder(customPasswordEncoder.getPasswordEncoder());
    }
 
+<<<<<<< Updated upstream
    @Autowired
    private JwtFilter jwtFilter;
 
@@ -57,12 +61,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
    }
+=======
+
+>>>>>>> Stashed changes
 
    @Autowired
    private JwtFilter jwtFilter;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http = http.csrf().disable().cors().disable();
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
+
+        http = http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and();
+
+        http = http.exceptionHandling()
+                .authenticationEntryPoint((request, response, ex) -> {
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
+                }).and();
+
+        http.authorizeRequests()
+                .antMatchers("/api/auth/**").permitAll() // Ensure this is correct
+                .anyRequest().authenticated();
+
+<<<<<<< Updated upstream
+
 
 
         http = http.sessionManagement()
@@ -79,24 +106,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
 
-
-
-        http = http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and();
-
-        http = http.exceptionHandling()
-                .authenticationEntryPoint((request, response, ex) -> {
-                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
-                }).and();
-
-        http.authorizeRequests()
-                .antMatchers("/api/auth/**").permitAll() // Ensure this is correct
-                .anyRequest().authenticated();
-
-
+=======
+>>>>>>> Stashed changes
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 
 
 
