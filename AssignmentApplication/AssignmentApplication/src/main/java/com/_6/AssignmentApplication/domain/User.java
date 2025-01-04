@@ -47,11 +47,9 @@ public class User implements UserDetails {
     }
 
     public void setUserName(String userName) {
-
-
-        this.userName = userName;
-
+        this.userName = userName; // Fix the assignment
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
