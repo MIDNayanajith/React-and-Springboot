@@ -35,4 +35,12 @@ public class AssignmentController {
         Optional<Assignment> assignmentOpt = assignmentService.findById(assignmentId);
         return ResponseEntity.ok(assignmentOpt.orElse(new Assignment()));
     }
+
+    @PutMapping("{assignmentId}")
+    public  ResponseEntity<?> updateAssignments(@PathVariable Long assignmentId,
+    @RequestBody Assignment assignment,
+    @AuthenticationPrincipal User user) {
+    Assignment updatedAssignment = assignmentService.save(assignment);
+    return ResponseEntity.ok(updatedAssignment);
+    }
 }
