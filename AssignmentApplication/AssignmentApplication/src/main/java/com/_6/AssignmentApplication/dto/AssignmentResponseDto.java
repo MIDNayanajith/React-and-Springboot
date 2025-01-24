@@ -2,6 +2,7 @@ package com._6.AssignmentApplication.dto;
 
 import com._6.AssignmentApplication.domain.Assignment;
 import com._6.AssignmentApplication.enums.AssignmentEnum;
+import com._6.AssignmentApplication.enums.AssignmentStatusEnum;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +12,7 @@ public class AssignmentResponseDto {
 
     private Assignment assignment;
     private List<AssignmentEnumDto> assignmentEnum;
+    private AssignmentStatusEnum[] statusEnums = AssignmentStatusEnum.values();
 
     public AssignmentResponseDto(Assignment assignment) {
         this.assignment = assignment;
@@ -29,6 +31,10 @@ public class AssignmentResponseDto {
 
     public List<AssignmentEnumDto> getAssignmentEnum() {
         return assignmentEnum;
+    }
+
+    public AssignmentStatusEnum[] getStatusEnums() {
+        return statusEnums;
     }
 
     public static class AssignmentEnumDto {
