@@ -2,11 +2,11 @@ package com._6.AssignmentApplication.enums;
 
 public enum AssignmentStatusEnum {
 
-    PENDING_SUBMISSION("PENDING_SUBMISSION",1),
-    SUBMITTED("SUBMITTED",2),
-    IN_REVIEW("IN_REVIEW",3),
-    NEEDS_UPDATE("NEEDS_UPDATE",4),
-    COMPLETED("COMPLETED",5);
+    PENDING_SUBMISSION("PENDING_SUBMISSION",0),
+    SUBMITTED("SUBMITTED",1),
+    IN_REVIEW("IN_REVIEW",2),
+    NEEDS_UPDATE("NEEDS_UPDATE",3),
+    COMPLETED("COMPLETED",4);
 
     private String status;
     private Integer step;

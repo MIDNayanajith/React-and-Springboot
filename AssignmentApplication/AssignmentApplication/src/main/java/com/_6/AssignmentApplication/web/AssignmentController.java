@@ -42,6 +42,7 @@ public class AssignmentController {
     public  ResponseEntity<?> updateAssignments(@PathVariable Long assignmentId,
     @RequestBody Assignment assignment,
     @AuthenticationPrincipal User user) {
+        assignment.setId(assignmentId);
     Assignment updatedAssignment = assignmentService.save(assignment);
     return ResponseEntity.ok(updatedAssignment);
     }
